@@ -13,6 +13,9 @@
         <action
             android:id="@+id/to_register"
             app:destination="@id/registerFragment" />
+        <action
+            android:id="@+id/to_home"
+            app:destination="@id/homeFragment" />
     </fragment>
     <fragment
         android:id="@+id/registerFragment"
@@ -23,4 +26,9 @@
             android:id="@+id/to_login"
             app:destination="@id/loginFragment" />
     </fragment>
+    <fragment
+        android:id="@+id/homeFragment"
+        android:name="com.ikhsan.storyapp.ui.home.HomeFragment"
+        android:label="fragment_home"
+        tools:layout="@layout/fragment_home" />
 </navigation>
