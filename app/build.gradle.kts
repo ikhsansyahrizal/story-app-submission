@@ -3,10 +3,12 @@ import org.jetbrains.kotlin.utils.addToStdlib.safeAs
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.jetbrains.kotlin.android)
-    alias(libs.plugins.kotlinAndroidKsp)
+//    alias(libs.plugins.kotlinAndroidKsp)
     alias(libs.plugins.androidx.navigation.safe.args)
-//    alias(libs.plugins.hiltAndroid)
+    alias(libs.plugins.hiltAndroid)
+    id("kotlin-kapt")
 }
+
 
 android {
     namespace = "com.ikhsan.storyapp"
@@ -30,6 +32,15 @@ android {
                 "proguard-rules.pro"
             )
         }
+
+        release {
+            buildConfigField("String", "BASE_URL", "\"https://story-api.dicoding.dev/v1/\"")
+
+        }
+
+        debug {
+            buildConfigField("String", "BASE_URL", "\"https://story-api.dicoding.dev/v1/\"")
+        }
     }
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_1_8
@@ -39,13 +50,19 @@ android {
         jvmTarget = "1.8"
     }
     buildFeatures {
+        buildConfig = true
         viewBinding = true
     }
     packaging {
         resources {
             excludes += "/META-INF/{AL2.0,LGPL2.1}"
-            merges += "META-INF/gradle/incremental.annotation.processors"
+            excludes += "META-INF/gradle/incremental.annotation.processors"
         }
+    }
+    kapt {
+        useBuildCache = true
+        correctErrorTypes = true
+        generateStubs = false
     }
 
 }
@@ -57,8 +74,10 @@ dependencies {
     implementation(libs.navigation.ui.ktx)
 
     implementation(libs.hilt.android)
-    implementation(libs.hilt.compiler)
-    implementation(libs.dagger.compiler)
+    kapt (libs.hilt.compiler)
+//    implementation(libs.hilt.compiler)
+//    implementation(libs.dagger.compiler)
+
 
     implementation(libs.androidx.camera.camera2)
     implementation(libs.camera.lifecycle)
@@ -66,6 +85,7 @@ dependencies {
 
     implementation(libs.retrofit)
     implementation(libs.retrofit2.converter.gson)
+    implementation(libs.retrofitScalars)
     implementation(libs.logging.interceptor)
     implementation(libs.androidx.lifecycle.runtime.ktx)
     implementation(libs.androidx.exifinterface)
