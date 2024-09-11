@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="space_xxxsmall">6dp</dimen>
+    <dimen name="space_xxsmall">8dp</dimen>
+    <dimen name="space_xsmall">10dp</dimen>
+    <dimen name="space_small">12dp</dimen>
+    <dimen name="space_normal">14dp</dimen>
+    <dimen name="space_medium">16dp</dimen>
+    <dimen name="space_large">18dp</dimen>
+    <dimen name="space_xlarge">20dp</dimen>
+    <dimen name="space_xxlarge">22dp</dimen>
+    <dimen name="space_xxxlarge">24dp</dimen>
+    <dimen name="space_jumbo">26dp</dimen>
+    <dimen name="space_xjumbo">28dp</dimen>
+    <dimen name="space_xxjumbo">30dp</dimen>
+    <dimen name="space_xxxjumbo">32dp</dimen>
+    <dimen name="space_xxxxjumbo">34dp</dimen>
+
+    <dimen name="text_xxxsmall">6sp</dimen>
+    <dimen name="text_xxsmall">8sp</dimen>
+    <dimen name="text_xsmall">10sp</dimen>
+    <dimen name="text_small">12sp</dimen>
+    <dimen name="text_normal">14sp</dimen>
+    <dimen name="text_medium">16sp</dimen>
+    <dimen name="text_large">18sp</dimen>
+    <dimen name="text_xlarge">20sp</dimen>
+    <dimen name="text_xxlarge">22sp</dimen>
+    <dimen name="text_xxxlarge">24sp</dimen>
+    <dimen name="text_jumbo">26sp</dimen>
+    <dimen name="text_xjumbo">28sp</dimen>
+    <dimen name="text_xxjumbo">30sp</dimen>
+    <dimen name="text_xxxjumbo">32sp</dimen>
+    <dimen name="text_xxxxjumbo">34sp</dimen>
+
+    <dimen name="size_xxxsmall">12dp</dimen>
+    <dimen name="size_xxsmall">16dp</dimen>
+    <dimen name="size_xsmall">20dp</dimen>
+    <dimen name="size_small">24dp</dimen>
+    <dimen name="size_normal">28dp</dimen>
+    <dimen name="size_medium">32dp</dimen>
+    <dimen name="size_large">36dp</dimen>
+    <dimen name="size_xlarge">40dp</dimen>
+    <dimen name="size_xxlarge">44dp</dimen>
+    <dimen name="size_xxxlarge">48dp</dimen>
+    <dimen name="size_xxxxlarge">52dp</dimen>
+    <dimen name="size_jumbo">56dp</dimen>
+    <dimen name="size_xjumbo">60dp</dimen>
+    <dimen name="size_xxjumbo">64dp</dimen>
+    <dimen name="size_xxxjumbo">68dp</dimen>
+    <dimen name="size_xxxxjumbo">72dp</dimen>
+    <dimen name="size_super">76dp</dimen>
+    <dimen name="size_xsuper">80dp</dimen>
+    <dimen name="size_xxxsuper">84dp</dimen>
+    <dimen name="size_xxxxsuper">88dp</dimen>
+
+    <!--default text size-->
+    <dimen name="text_default_text_small">14sp</dimen>
+    <dimen name="text_default_text_medium">18sp</dimen>
+    <dimen name="text_default_text_large">22sp</dimen>
+
+    <dimen name="text_default_page_tittle">20sp</dimen>
+    <dimen name="text_default_subtittle1">16sp</dimen>
+    <dimen name="text_default_body2">14sp</dimen>
+
+    <dimen name="fab_main_activity_size">40dp</dimen>
+    <dimen name="fab_main_activity_custom_size">65dp</dimen>
+    <dimen name="loading_dimens_size">72dp</dimen>
+
+    <dimen name="fullwidth">360dp</dimen>
+
+    <dimen name="ilustrasi">206dp</dimen>
+    <dimen name="ilustrasi_empty_list">166dp</dimen>
+    <dimen name="home_card">125dp</dimen>
+    <dimen name="login_card">400dp</dimen>
+
+</resources>
