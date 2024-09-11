@@ -17,6 +17,7 @@ abstract class BaseDialogFragment<out VB : ViewBinding>(private val inflate: Inf
 
     private var _binding: VB? = null
     protected val bind get() = _binding!!
+    val tags = "tags1"
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -26,12 +27,14 @@ abstract class BaseDialogFragment<out VB : ViewBinding>(private val inflate: Inf
         _binding = inflate(inflater)
         initView()
         initListener()
+        initObserver()
         return bind.root
     }
 
 
     override fun initView() {}
     override fun initListener() {}
+    override fun initObserver() = Unit
 
     override fun onStart() {
         super.onStart()

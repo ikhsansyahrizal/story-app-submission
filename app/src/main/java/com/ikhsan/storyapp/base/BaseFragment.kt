@@ -18,9 +18,11 @@ import androidx.navigation.NavDirections
 import androidx.navigation.fragment.findNavController
 import androidx.viewbinding.ViewBinding
 import com.ikhsan.storyapp.R
+import com.ikhsan.storyapp.base.BaseActivity
 import com.ikhsan.storyapp.base.BaseCommonFunction
 import com.ikhsan.storyapp.base.FragmentLifecycleAware
 import com.ikhsan.storyapp.base.InfoDialog
+import com.ikhsan.storyapp.base.UIConstant
 import com.ikhsan.storyapp.util.Inflate
 
 abstract class BaseFragment<out VB: ViewBinding>(private val inflate: Inflate<VB>): Fragment(), BaseCommonFunction {
@@ -102,6 +104,23 @@ abstract class BaseFragment<out VB: ViewBinding>(private val inflate: Inflate<VB
         if (status) loadingDialog.show() else loadingDialog.dismiss()
     }
 
-    override fun String?.makeToast() = Toast.makeText(requireContext(), this ?: "", Toast.LENGTH_SHORT).show()
 
+    fun displayInfoMessage(message: String) =
+        displayMessage(message, UIConstant.OK, R.drawable.img_fail)
+
+
+    fun displaySuccessInfoMessage(message: String) =
+        displayMessage(message, UIConstant.OK, R.drawable.ic_check)
+
+    protected fun displayMessage(
+        title: String,
+        button: String? = UIConstant.OK,
+        icon: Int? = R.drawable.img_fail,
+        ok: (() -> Unit)? = null,
+    ) = (activity as BaseActivity<*>).displayMessage(
+        title = title,
+        button = button,
+        icon = icon,
+        ok = ok
+    )
 }

@@ -89,5 +89,18 @@
 
     </com.google.android.material.textfield.TextInputLayout>
 
+    <Button
+        android:id="@+id/btnRegister"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/space_xxxjumbo"
+        android:background="@drawable/btn_background"
+        android:text="Register"
+        android:textColor="@color/primary_text"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/textInputLayoutPassowrd"
+        app:layout_constraintStart_toStartOf="@+id/textInputLayoutPassowrd" />
+
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
