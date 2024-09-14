@@ -9,6 +9,6 @@ import javax.inject.Inject
 @HiltViewModel
 class StartingViewModel @Inject constructor(private val useCase: AuthUseCase) : ViewModel() {
 
-    fun isLogin(): Flow<Boolean> = useCase.isLogin()
+    fun isLogin(): Boolean = useCase.isLogin()
 
 }

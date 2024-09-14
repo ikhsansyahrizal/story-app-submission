@@ -13,7 +13,6 @@ import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.flow.flowOn
-import kotlinx.coroutines.flow.map
 import javax.inject.Inject
 
 class AuthRepositoryImpl @Inject constructor(
@@ -56,9 +55,7 @@ class AuthRepositoryImpl @Inject constructor(
         }.flowOn(ioDispatcher)
     }
 
-    override fun isLogin(): Flow<Boolean> =
-        prefDataStore.getPreference(USER_SESSION, "").map { token ->
-            Log.d("repo", token)
-            token.isNotEmpty()
-        }
+    override fun isLogin(): Boolean {
+        return prefDataStore.getPreference(USER_SESSION, "").isNotEmpty()
+    }
 }
