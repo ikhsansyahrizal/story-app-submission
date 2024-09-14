@@ -21,6 +21,11 @@ kspVersion = "1.9.20-1.0.14"
 navigation-fragment-ktx = "2.5.3"
 navigation-ui-ktx = "2.5.3"
 androidxNavigationSafeargsGradlePlugin = "2.7.7"
+dataStoreVersion = "1.1.1"
+legacySupportV4 = "1.0.0"
+lifecycleLivedataKtx = "2.8.5"
+lifecycleViewmodelKtx = "2.8.5"
+fragmentKtx = "1.8.3"
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
@@ -45,6 +50,12 @@ hilt-compiler = { group = "com.google.dagger", name = "hilt-android-compiler", v
 dagger-compiler = { group = "com.google.dagger", name = "dagger-compiler", version.ref = "hiltVersion"}
 navigation-fragment-ktx = { group = "androidx.navigation", name = "navigation-fragment-ktx", version.ref = "navigation-fragment-ktx" }
 navigation-ui-ktx = { group = "androidx.navigation", name = "navigation-ui-ktx", version.ref = "navigation-ui-ktx" }
+preferences-datastore = { group = "androidx.datastore", name = "datastore-preferences", version.ref = "dataStoreVersion"}
+proto-datastore = { group = "androidx.datastore", name = "datastore-core", version.ref = "dataStoreVersion"}
+androidx-legacy-support-v4 = { group = "androidx.legacy", name = "legacy-support-v4", version.ref = "legacySupportV4" }
+androidx-lifecycle-livedata-ktx = { group = "androidx.lifecycle", name = "lifecycle-livedata-ktx", version.ref = "lifecycleLivedataKtx" }
+androidx-lifecycle-viewmodel-ktx = { group = "androidx.lifecycle", name = "lifecycle-viewmodel-ktx", version.ref = "lifecycleViewmodelKtx" }
+androidx-fragment-ktx = { group = "androidx.fragment", name = "fragment-ktx", version.ref = "fragmentKtx" }
 
 
 [plugins]

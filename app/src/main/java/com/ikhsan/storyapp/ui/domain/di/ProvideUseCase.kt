@@ -1,7 +1,7 @@
 package com.ikhsan.storyapp.ui.domain.di
 
-import com.ikhsan.storyapp.ui.domain.RegisterUseCase
-import com.ikhsan.storyapp.ui.domain.RegisterUseCaseImpl
+import com.ikhsan.storyapp.ui.domain.auth.AuthUseCase
+import com.ikhsan.storyapp.ui.domain.auth.AuthUseCaseImpl
 import dagger.Binds
 import dagger.Module
 import dagger.hilt.InstallIn
@@ -12,6 +12,6 @@ import dagger.hilt.components.SingletonComponent
 interface ProvideUseCase {
 
     @Binds
-    fun provideRegisterUseCase(impl: RegisterUseCaseImpl): RegisterUseCase
+    fun provideRegisterUseCase(impl: AuthUseCaseImpl): AuthUseCase
 
 }

@@ -8,14 +8,14 @@ import com.ikhsan.storyapp.base.UIConstant
 import com.ikhsan.storyapp.base.UIStateData
 import com.ikhsan.storyapp.base.wrapper.ConsumeResultDomain
 import com.ikhsan.storyapp.core.data.response.RegisterUserRes
-import com.ikhsan.storyapp.ui.domain.RegisterUseCase
+import com.ikhsan.storyapp.ui.domain.auth.AuthUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.onStart
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
-class RegisterViewModel @Inject constructor(private val useCase: RegisterUseCase): ViewModel() {
+class RegisterViewModel @Inject constructor(private val useCase: AuthUseCase): ViewModel() {
 
     private var _register = MutableLiveData<UIStateData<RegisterUserRes>>()
     val register: LiveData<UIStateData<RegisterUserRes>> = _register

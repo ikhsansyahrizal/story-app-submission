@@ -3,7 +3,20 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/loginFragment">
+    app:startDestination="@id/startingFragment">
+
+    <fragment
+        android:id="@+id/startingFragment"
+        android:name="com.ikhsan.storyapp.ui.starter.StartingFragment"
+        android:label="fragment_starting"
+        tools:layout="@layout/fragment_starting" >
+        <action
+            android:id="@+id/to_home"
+            app:destination="@id/homeFragment" />
+        <action
+            android:id="@+id/to_login"
+            app:destination="@id/loginFragment" />
+    </fragment>
 
     <fragment
         android:id="@+id/loginFragment"
@@ -13,6 +26,9 @@
         <action
             android:id="@+id/to_register"
             app:destination="@id/registerFragment" />
+        <action
+            android:id="@+id/to_home"
+            app:destination="@id/homeFragment" />
     </fragment>
     <fragment
         android:id="@+id/registerFragment"
@@ -23,4 +39,9 @@
             android:id="@+id/to_login"
             app:destination="@id/loginFragment" />
     </fragment>
+    <fragment
+        android:id="@+id/homeFragment"
+        android:name="com.ikhsan.storyapp.ui.home.HomeFragment"
+        android:label="fragment_home"
+        tools:layout="@layout/fragment_home" />
 </navigation>

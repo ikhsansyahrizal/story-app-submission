@@ -69,12 +69,19 @@ android {
 
 dependencies {
 
+    implementation(libs.preferences.datastore)
+    implementation(libs.proto.datastore)
 
     implementation(libs.navigation.fragment.ktx)
     implementation(libs.navigation.ui.ktx)
 
     implementation(libs.hilt.android)
+    implementation(libs.androidx.legacy.support.v4)
+    implementation(libs.androidx.lifecycle.livedata.ktx)
+    implementation(libs.androidx.lifecycle.viewmodel.ktx)
+    implementation(libs.androidx.fragment.ktx)
     kapt (libs.hilt.compiler)
+    //ksp
 //    implementation(libs.hilt.compiler)
 //    implementation(libs.dagger.compiler)
 
