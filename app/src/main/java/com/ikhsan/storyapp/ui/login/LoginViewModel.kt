@@ -35,7 +35,7 @@ class LoginViewModel @Inject constructor(private val useCase: AuthUseCase): View
                         else -> _login.value = UIStateData(message = UIConstant.GENERAL_ERROR, loading = false)
                     }
                 }
-        } else _login.value = UIStateData(message = "field can't be empty", loading = false)
+        } else _login.value = UIStateData(message = UIConstant.EMPTY_ERROR, loading = false)
     }
     
 }

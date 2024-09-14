@@ -20,6 +20,7 @@
         <com.ikhsan.storyapp.base.customview.CustomEditText
             android:id="@+id/ed_login_email"
             android:inputType="text"
+            android:text="ikhsan23@gmail.com"
             android:layout_width="match_parent"
             android:layout_height="@dimen/size_jumbo"
             android:hint="Username"
@@ -51,6 +52,7 @@
             style="@android:style/TextAppearance.Widget.EditText"
             android:layout_width="match_parent"
             android:layout_height="@dimen/size_jumbo"
+            android:text="12345678"
             android:imeOptions="actionDone"
             android:gravity="center|start"
             android:inputType="textPassword"

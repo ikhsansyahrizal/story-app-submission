@@ -1,11 +1,9 @@
 package com.ikhsan.storyapp.ui.login
 
 import androidx.fragment.app.viewModels
-import com.ikhsan.storyapp.R
 import com.ikhsan.storyapp.base.helper.getTexts
 import com.ikhsan.storyapp.base.helper.observe
 import com.ikhsan.storyapp.databinding.FragmentLoginBinding
-import com.ikhsan.storyapp.ui.register.RegisterFragmentDirections
 import com.ikhsan.storyeapp.base.BaseFragment
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -49,5 +47,8 @@ class LoginFragment : BaseFragment<FragmentLoginBinding>(FragmentLoginBinding::i
             data?.message?.let { displayInfoMessage(it) }
             data?.loading?.let { showLoadingDialog(it) }
         }
+
     }
+
+
 }

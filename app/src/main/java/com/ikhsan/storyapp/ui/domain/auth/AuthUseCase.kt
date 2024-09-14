@@ -18,4 +18,6 @@ interface AuthUseCase {
         password: String
     ): Flow<ConsumeResultDomain<LoginRes>>
 
+    fun isLogin(): Flow<Boolean>
+
 }
