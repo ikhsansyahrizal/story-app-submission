@@ -1,6 +1,8 @@
 package com.ikhsan.storyapp.core.data.response
 
+import android.os.Parcelable
 import com.google.gson.annotations.SerializedName
+import kotlinx.parcelize.Parcelize
 
 data class GetAllStoriesRes(
 
@@ -15,6 +17,7 @@ data class GetAllStoriesRes(
 
 )
 
+@Parcelize
 data class ListStory(
 
     @field:SerializedName("id")
@@ -38,4 +41,4 @@ data class ListStory(
     @field:SerializedName("lon")
     val lon: Double? = 0.0,
 
-    )
+    ): Parcelable

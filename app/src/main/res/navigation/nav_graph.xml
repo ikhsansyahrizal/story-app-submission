@@ -47,5 +47,17 @@
         <action
             android:id="@+id/to_login"
             app:destination="@id/loginFragment" />
+        <action
+            android:id="@+id/to_detail"
+            app:destination="@id/detailStoryFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/detailStoryFragment"
+        android:name="com.ikhsan.storyapp.ui.detailstory.DetailStoryFragment"
+        android:label="fragment_detail_story"
+        tools:layout="@layout/fragment_detail_story">
+        <argument
+            android:name="data"
+            app:argType="com.ikhsan.storyapp.core.data.response.ListStory" />
     </fragment>
 </navigation>
