@@ -55,9 +55,13 @@ class HomeFragment: BaseFragment<FragmentHomeBinding>(FragmentHomeBinding::infla
             viewModel.getAllStories(page = 1, size = 10, location = null)
         }
 
-        bind.ivLogOut.setOnClickListener {
+        bind.actionLogout.setOnClickListener {
             viewModel.doLogOut()
             gooTo(HomeFragmentDirections.toLogin())
+        }
+
+        adapter.onTapItem = {
+            gooTo(HomeFragmentDirections.toDetail(it))
         }
     }
 
