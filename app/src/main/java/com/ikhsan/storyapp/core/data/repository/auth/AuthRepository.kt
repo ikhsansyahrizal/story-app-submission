@@ -19,6 +19,7 @@ interface AuthRepository {
         password: String
     ): Flow<ConsumeResultDomain<LoginRes>>
 
-    fun isLogin(): Flow<Boolean>
+    fun isLogin(): Boolean
 
+    fun doLogOut()
 }

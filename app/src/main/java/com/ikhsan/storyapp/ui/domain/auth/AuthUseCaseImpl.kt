@@ -20,7 +20,11 @@ class AuthUseCaseImpl @Inject constructor(private val repo: AuthRepository) : Au
         return repo.doLogin(email, password)
     }
 
-    override fun isLogin(): Flow<Boolean> {
+    override fun isLogin(): Boolean {
         return repo.isLogin()
+    }
+
+    override fun doLogOut() {
+        repo.doLogOut()
     }
 }

@@ -5,6 +5,8 @@ import android.net.ConnectivityManager
 import com.google.gson.GsonBuilder
 import com.ikhsan.storyapp.BuildConfig
 import com.ikhsan.storyapp.R
+import com.ikhsan.storyapp.base.helper.local.PreferenceDataStoreHelper
+import com.ikhsan.storyapp.base.helper.local.PreferenceDataStoreHelperImpl.Companion.USER_SESSION
 import com.ikhsan.storyapp.core.network.ApiInterface
 import com.ikhsan.storyapp.core.network.NetworkConnectionInterceptor
 import dagger.Module
@@ -14,7 +16,6 @@ import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.components.SingletonComponent
 import okhttp3.Interceptor
 import okhttp3.OkHttpClient
-import okhttp3.Request
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
@@ -32,27 +33,33 @@ object ProvideNetwork {
     @Singleton
     @Provides
     fun provideApi(
+        dataStore: PreferenceDataStoreHelper,
         @NetworkConnectionInterceptor noNetworkInterceptor: Interceptor,
         ): ApiInterface {
         return Retrofit.Builder()
             .baseUrl(getBaseUrl())
-            .client(setupClient(noNetworkInterceptor))
+            .client(setupClient(dataStore, noNetworkInterceptor))
             .addConverterFactory(ScalarsConverterFactory.create())
             .addConverterFactory(GsonConverterFactory.create(GsonBuilder().disableHtmlEscaping().setLenient().create()))
             .build()
             .create(ApiInterface::class.java)
     }
 
-    private fun setupClient(noNetworkInterceptor: Interceptor): OkHttpClient {
+    private fun setupClient(dataStore: PreferenceDataStoreHelper, networkInterceptor: Interceptor): OkHttpClient {
         return OkHttpClient.Builder()
             .readTimeout(50L, TimeUnit.SECONDS)
             .connectTimeout(50L, TimeUnit.SECONDS)
             .writeTimeout(50L, TimeUnit.SECONDS)
             .addNetworkInterceptor {
-                val headers = it.request().addHeaders()
-                return@addNetworkInterceptor it.proceed(headers.build())
+                val original = it.request()
+                val requestBuilder = original.newBuilder()
+                requestBuilder.header("Content-Type", "application/json")
+                requestBuilder.header("Authorization", "Bearer " + dataStore.getPreference(
+                    USER_SESSION, ""))
+                val request = requestBuilder.method(original.method, original.body).build()
+                return@addNetworkInterceptor it.proceed(request)
             }
-            .addInterceptor(noNetworkInterceptor)
+            .addInterceptor(networkInterceptor)
             .also { client ->
                 if (BuildConfig.DEBUG) {
                     val logging = HttpLoggingInterceptor()
@@ -61,12 +68,6 @@ object ProvideNetwork {
                 }
             }
             .build()
-    }
-
-    private fun Request.addHeaders(): Request.Builder {
-        return newBuilder().apply {
-            header("Content-Type", "application/json")
-        }
     }
 
     @Singleton
