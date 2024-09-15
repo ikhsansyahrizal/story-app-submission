@@ -1,5 +1,6 @@
 package com.ikhsan.storyapp.ui.login
 
+import androidx.activity.OnBackPressedCallback
 import androidx.fragment.app.viewModels
 import com.ikhsan.storyapp.base.helper.getTexts
 import com.ikhsan.storyapp.base.helper.observe
@@ -13,7 +14,6 @@ class LoginFragment : BaseFragment<FragmentLoginBinding>(FragmentLoginBinding::i
     private val viewModel: LoginViewModel by viewModels()
 
     override fun initView() {
-
         bind.edLoginEmail.apply {
             setTextInputLayout(bind.textInputLayoutUsername)
             setMaxLength(20)

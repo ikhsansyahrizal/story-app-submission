@@ -10,8 +10,8 @@ data class GetAllStoriesRes(
     @field:SerializedName("message")
     val message: String? = null,
 
-    @field:SerializedName("loginResult")
-    val listStory: ListStory? = null,
+    @field:SerializedName("listStory")
+    val listStory: List<ListStory>? = null,
 
 )
 

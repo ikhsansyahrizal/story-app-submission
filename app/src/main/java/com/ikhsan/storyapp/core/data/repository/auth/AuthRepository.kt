@@ -21,4 +21,5 @@ interface AuthRepository {
 
     fun isLogin(): Boolean
 
+    fun doLogOut()
 }

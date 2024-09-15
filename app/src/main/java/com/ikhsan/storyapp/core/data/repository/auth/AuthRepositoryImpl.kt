@@ -1,6 +1,5 @@
 package com.ikhsan.storyapp.core.data.repository.auth
 
-import android.util.Log
 import com.ikhsan.storyapp.base.BaseRepository
 import com.ikhsan.storyapp.base.helper.local.PreferenceDataStoreHelper
 import com.ikhsan.storyapp.base.helper.local.PreferenceDataStoreHelperImpl.Companion.USER_SESSION
@@ -57,5 +56,9 @@ class AuthRepositoryImpl @Inject constructor(
 
     override fun isLogin(): Boolean {
         return prefDataStore.getPreference(USER_SESSION, "").isNotEmpty()
+    }
+
+    override fun doLogOut() {
+        prefDataStore.clearAllData()
     }
 }

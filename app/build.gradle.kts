@@ -69,6 +69,10 @@ android {
 
 dependencies {
 
+    implementation(libs.swipe.layout)
+    implementation(libs.glide)
+    implementation(libs.glide.annotation)
+
     implementation(libs.preferences.datastore)
     implementation(libs.proto.datastore)
 

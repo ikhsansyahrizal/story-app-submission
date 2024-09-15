@@ -31,4 +31,11 @@ class PreferenceDataStoreHelperImpl @Inject constructor(
         }
     }
 
+    override fun clearAllData() {
+        runBlocking {
+            dataStore.edit { data ->
+                data.clear()
+            }
+        }
+    }
 }

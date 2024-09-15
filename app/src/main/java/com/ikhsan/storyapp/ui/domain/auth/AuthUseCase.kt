@@ -20,4 +20,6 @@ interface AuthUseCase {
 
     fun isLogin(): Boolean
 
+    fun doLogOut()
+
 }

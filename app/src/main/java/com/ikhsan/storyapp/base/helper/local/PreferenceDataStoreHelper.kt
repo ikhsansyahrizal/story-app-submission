@@ -8,4 +8,5 @@ interface PreferenceDataStoreHelper {
 
     fun <T> getPreference(key: Preferences.Key<T>, defaultValue: T): T
 
+    fun clearAllData()
 }

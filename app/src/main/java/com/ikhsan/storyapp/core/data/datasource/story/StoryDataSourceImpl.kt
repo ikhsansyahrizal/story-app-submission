@@ -20,7 +20,9 @@ class StoryDataSourceImpl @Inject constructor() : StoryDataSource, BaseRemote() 
                 location = location
             )
         )) {
-            is RemoteResult.Success -> ConsumeResultRemote.Success(data = remoteResult.data)
+            is RemoteResult.Success -> {
+                ConsumeResultRemote.Success(data = remoteResult.data)
+            }
 
             is RemoteResult.Error -> ConsumeResultRemote.Error(
                 code = remoteResult.code,
