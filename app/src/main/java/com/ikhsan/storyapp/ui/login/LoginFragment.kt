@@ -3,7 +3,9 @@ package com.ikhsan.storyapp.ui.login
 import android.animation.AnimatorSet
 import android.animation.ObjectAnimator
 import android.view.View
+import androidx.activity.OnBackPressedCallback
 import androidx.fragment.app.viewModels
+import com.ikhsan.storyapp.MainActivity
 import com.ikhsan.storyapp.base.helper.getTexts
 import com.ikhsan.storyapp.base.helper.observe
 import com.ikhsan.storyapp.databinding.FragmentLoginBinding
@@ -37,6 +39,12 @@ class LoginFragment : BaseFragment<FragmentLoginBinding>(FragmentLoginBinding::i
     }
 
     override fun initListener() {
+        requireActivity().onBackPressedDispatcher.addCallback(viewLifecycleOwner, object : OnBackPressedCallback(true) {
+            override fun handleOnBackPressed() {
+                (activity as? MainActivity)?.handleBackPress()
+            }
+        })
+
 
         bind.tvRegister.setOnClickListener {
             gooTo(LoginFragmentDirections.toRegister())

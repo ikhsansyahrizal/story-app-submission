@@ -7,6 +7,7 @@ import androidx.activity.OnBackPressedCallback
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.ikhsan.storyapp.MainActivity
 import com.ikhsan.storyapp.base.helper.EndlessRecyclerViewScrollListener
 import com.ikhsan.storyapp.base.helper.WrapContentLinearLayoutManager
 import com.ikhsan.storyapp.base.helper.initRecycleView
@@ -51,6 +52,12 @@ class HomeFragment: BaseFragment<FragmentHomeBinding>(FragmentHomeBinding::infla
     }
 
     override fun initListener() {
+
+        requireActivity().onBackPressedDispatcher.addCallback(viewLifecycleOwner, object : OnBackPressedCallback(true) {
+            override fun handleOnBackPressed() {
+                (activity as? MainActivity)?.handleBackPress()
+            }
+        })
         initScrollListener()
 
         bind.buttonAdd.setOnClickListener {
