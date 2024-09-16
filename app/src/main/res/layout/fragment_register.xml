@@ -8,6 +8,8 @@
 
 
     <com.google.android.material.textfield.TextInputLayout
+        android:alpha="0"
+        tools:alpha="100"
         android:id="@+id/textInputLayoutName"
         style="@android:style/TextAppearance.Widget.EditText"
         android:layout_width="match_parent"
@@ -23,6 +25,8 @@
         app:layout_constraintVertical_bias="0.126">
 
         <com.ikhsan.storyapp.base.customview.CustomEditText
+            android:alpha="0"
+            tools:alpha="100"
             android:id="@+id/ed_register_name"
             android:layout_width="match_parent"
             android:layout_height="@dimen/size_jumbo"
@@ -36,6 +40,8 @@
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
+        android:alpha="0"
+        tools:alpha="100"
         android:id="@+id/textInputLayoutPassowrd"
         style="@android:style/TextAppearance.Widget.EditText"
         android:layout_width="match_parent"
@@ -52,6 +58,8 @@
         app:layout_constraintTop_toBottomOf="@+id/textInputLayoutEmail">
 
         <com.ikhsan.storyapp.base.customview.CustomEditText
+            android:alpha="0"
+            tools:alpha="100"
             android:id="@+id/ed_register_password"
             android:layout_width="match_parent"
             android:layout_height="@dimen/size_jumbo"
@@ -64,6 +72,8 @@
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
+        android:alpha="0"
+        tools:alpha="100"
         android:id="@+id/textInputLayoutEmail"
         style="@android:style/TextAppearance.Widget.EditText"
         android:layout_width="match_parent"
@@ -78,6 +88,8 @@
         app:layout_constraintTop_toBottomOf="@+id/textInputLayoutName">
 
         <com.ikhsan.storyapp.base.customview.CustomEditText
+            android:alpha="0"
+            tools:alpha="100"
             android:id="@+id/ed_register_email"
             android:layout_width="match_parent"
             android:layout_height="@dimen/size_jumbo"
@@ -90,6 +102,8 @@
     </com.google.android.material.textfield.TextInputLayout>
 
     <Button
+        android:alpha="0"
+        tools:alpha="100"
         android:id="@+id/btnRegister"
         android:layout_width="0dp"
         android:layout_height="wrap_content"

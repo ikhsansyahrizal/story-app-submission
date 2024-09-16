@@ -1,12 +1,18 @@
 package com.ikhsan.storyapp.ui.login
 
+import android.animation.AnimatorSet
+import android.animation.ObjectAnimator
+import android.view.View
 import androidx.activity.OnBackPressedCallback
 import androidx.fragment.app.viewModels
+import com.ikhsan.storyapp.MainActivity
 import com.ikhsan.storyapp.base.helper.getTexts
 import com.ikhsan.storyapp.base.helper.observe
 import com.ikhsan.storyapp.databinding.FragmentLoginBinding
 import com.ikhsan.storyeapp.base.BaseFragment
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
 class LoginFragment : BaseFragment<FragmentLoginBinding>(FragmentLoginBinding::inflate) {
@@ -14,6 +20,8 @@ class LoginFragment : BaseFragment<FragmentLoginBinding>(FragmentLoginBinding::i
     private val viewModel: LoginViewModel by viewModels()
 
     override fun initView() {
+        playAnimation()
+
         bind.edLoginEmail.apply {
             setTextInputLayout(bind.textInputLayoutUsername)
             setMaxLength(20)
@@ -27,9 +35,16 @@ class LoginFragment : BaseFragment<FragmentLoginBinding>(FragmentLoginBinding::i
             maxLines = 1
         }
 
+
     }
 
     override fun initListener() {
+        requireActivity().onBackPressedDispatcher.addCallback(viewLifecycleOwner, object : OnBackPressedCallback(true) {
+            override fun handleOnBackPressed() {
+                (activity as? MainActivity)?.handleBackPress()
+            }
+        })
+
 
         bind.tvRegister.setOnClickListener {
             gooTo(LoginFragmentDirections.toRegister())
@@ -51,5 +66,22 @@ class LoginFragment : BaseFragment<FragmentLoginBinding>(FragmentLoginBinding::i
 
     }
 
+    private fun playAnimation() {
+        val bookImg = ObjectAnimator.ofFloat(bind.ivBook, View.ALPHA, 1f).setDuration(2500)
 
+        val emailLayout = ObjectAnimator.ofFloat(bind.textInputLayoutUsername, View.ALPHA, 1f).setDuration(500)
+        val emailEt = ObjectAnimator.ofFloat(bind.edLoginEmail, View.ALPHA, 1f).setDuration(500)
+
+        val passLayout = ObjectAnimator.ofFloat(bind.textInputLayoutPassword, View.ALPHA, 1f).setDuration(500)
+        val passEt = ObjectAnimator.ofFloat(bind.edLoginPassword, View.ALPHA, 1f).setDuration(500)
+
+        val registerTv = ObjectAnimator.ofFloat(bind.tvRegister, View.ALPHA, 1f).setDuration(500)
+
+        val loginBtn = ObjectAnimator.ofFloat(bind.btnLogin, View.ALPHA, 1f).setDuration(500)
+
+        AnimatorSet().apply {
+            playSequentially(bookImg, emailLayout, emailEt, passLayout, passEt, registerTv, loginBtn)
+            start()
+        }
+    }
 }
