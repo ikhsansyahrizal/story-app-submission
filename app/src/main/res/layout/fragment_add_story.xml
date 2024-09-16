@@ -21,18 +21,18 @@
         app:srcCompat="@drawable/ic_place_holder" />
 
     <TextView
-        android:alpha="0"
-        tools:alpha="100"
         android:id="@+id/tv_add_image"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/space_normal"
+        android:layout_marginTop="12dp"
+        android:alpha="0"
         android:padding="@dimen/size_xxxsmall"
-        android:text="add image from :"
+        android:text="@string/add_image_from"
         android:textColor="@color/black"
         app:layout_constraintEnd_toEndOf="@+id/previewImageView"
         app:layout_constraintStart_toStartOf="@+id/previewImageView"
-        app:layout_constraintTop_toBottomOf="@id/previewImageView" />
+        app:layout_constraintTop_toBottomOf="@id/previewImageView"
+        tools:alpha="100" />
 
     <LinearLayout
         android:id="@+id/layout_btn_add_image"
@@ -53,7 +53,7 @@
             android:layout_marginHorizontal="@dimen/space_normal"
             android:layout_weight="1"
             android:background="@drawable/btn_background"
-            android:text="Camera"
+            android:text="@string/camera"
             android:textColor="@color/white" />
 
         <Button
@@ -66,7 +66,7 @@
             android:layout_marginHorizontal="@dimen/space_normal"
             android:layout_weight="1"
             android:background="@drawable/btn_background"
-            android:text="Gallery"
+            android:text="@string/gallery"
             android:textColor="@color/white" />
 
     </LinearLayout>
@@ -95,7 +95,7 @@
             android:layout_width="match_parent"
             android:layout_height="@dimen/size_jumbo"
             android:gravity="center|start"
-            android:hint="Description"
+            android:hint="@string/description"
             android:imeOptions="actionNext"
             android:inputType="text"
             android:textColor="@color/black"
@@ -111,7 +111,7 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="@dimen/space_xxxjumbo"
         android:background="@drawable/btn_background"
-        android:text="Add Story"
+        android:text="@string/add_story"
         android:textColor="@color/white"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@+id/textInputLayoutDescription"
