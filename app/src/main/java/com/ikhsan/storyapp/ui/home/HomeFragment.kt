@@ -2,12 +2,16 @@ package com.ikhsan.storyapp.ui.home
 
 import android.animation.AnimatorSet
 import android.animation.ObjectAnimator
+import android.content.Intent
+import android.provider.Settings
 import android.view.View
 import androidx.activity.OnBackPressedCallback
+import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.ikhsan.storyapp.MainActivity
+import com.ikhsan.storyapp.R
 import com.ikhsan.storyapp.base.helper.EndlessRecyclerViewScrollListener
 import com.ikhsan.storyapp.base.helper.WrapContentLinearLayoutManager
 import com.ikhsan.storyapp.base.helper.initRecycleView
@@ -27,7 +31,6 @@ class HomeFragment: BaseFragment<FragmentHomeBinding>(FragmentHomeBinding::infla
         WrapContentLinearLayoutManager(requireContext())
     }
     private lateinit var scrollListener: EndlessRecyclerViewScrollListener
-
 
     override fun initView() {
         setAdapter()
@@ -69,14 +72,33 @@ class HomeFragment: BaseFragment<FragmentHomeBinding>(FragmentHomeBinding::infla
             viewModel.getAllStories(page = 1, size = 10, location = null)
         }
 
-        bind.actionLogout.setOnClickListener {
-            viewModel.doLogOut()
-            gooTo(HomeFragmentDirections.toLogin())
+        bind.actionSetting.setOnClickListener {
+            alertDialogSetting()
         }
 
         adapter.onTapItem = {
             gooTo(HomeFragmentDirections.toDetail(it))
         }
+    }
+
+    private fun alertDialogSetting() {
+        val settingList = resources.getStringArray(R.array.list_setting)
+        val builder = AlertDialog.Builder(requireActivity())
+        builder.setTitle(resources.getString(R.string.menu_setting))
+        builder.setItems(settingList) { _, which ->
+            when (which) {
+                0 -> {
+                    startActivity(Intent(Settings.ACTION_LOCALE_SETTINGS))
+                }
+                1 -> {
+                    viewModel.doLogOut()
+                    gooTo(HomeFragmentDirections.toLogin())
+                }
+            }
+        }
+        val alertDialog = builder.create()
+        alertDialog.window?.setBackgroundDrawableResource(R.drawable.btn_background)
+        alertDialog.show()
     }
 
     private fun setAdapter() {
@@ -99,7 +121,7 @@ class HomeFragment: BaseFragment<FragmentHomeBinding>(FragmentHomeBinding::infla
 
     private fun playAnimation() {
         val titleTv = ObjectAnimator.ofFloat(bind.tvTitle, View.ALPHA, 1f).setDuration(500)
-        val logoutBtn = ObjectAnimator.ofFloat(bind.actionLogout, View.ALPHA, 1f).setDuration(500)
+        val logoutBtn = ObjectAnimator.ofFloat(bind.actionSetting, View.ALPHA, 1f).setDuration(500)
 
         val rv = ObjectAnimator.ofFloat(bind.swipe, View.ALPHA, 1f).setDuration(500)
 

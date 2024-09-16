@@ -39,10 +39,9 @@
             android:layout_width="match_parent"
             android:layout_height="@dimen/size_jumbo"
             android:gravity="center|start"
-            android:hint="Username"
+            android:hint="@string/username"
             android:imeOptions="actionNext"
             android:inputType="text"
-            android:text="ikhsan23@gmail.com"
             android:textColor="@color/black" />
 
     </com.google.android.material.textfield.TextInputLayout>
@@ -55,7 +54,7 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/space_normal"
-        android:hint="Password"
+        android:hint="@string/password"
         app:errorEnabled="true"
         app:errorIconDrawable="@null"
         app:errorTextColor="@color/red_error"
@@ -73,7 +72,6 @@
             style="@android:style/TextAppearance.Widget.EditText"
             android:layout_width="match_parent"
             android:layout_height="@dimen/size_jumbo"
-            android:text="12345678"
             android:imeOptions="actionDone"
             android:gravity="center|start"
             android:inputType="textPassword"
@@ -102,7 +100,7 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="@dimen/space_xxxjumbo"
         android:background="@drawable/btn_background"
-        android:text="Login"
+        android:text="@string/login"
         android:textColor="@color/white"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@+id/textInputLayoutPassword"

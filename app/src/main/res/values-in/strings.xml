@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Aplikasi Cerita</string>
+    <string name="no_internet">Tidak ada Koneksi Internet yang terdeteksi, silakan periksa koneksi Anda</string>
+    <string name="detail_story">Cerita Detil</string>
+    <string name="stories">Cerita</string>
+    <string name="doesn_t_have_an_accoount_register_here">Tidak punya akun? <u>Daftar di sini</u></string>
+    <string name="username">Email</string>
+    <string name="password">Password</string>
+    <string name="login">Masuk</string>
+    <string name="add_image_from">tambahkan gambar melalui :</string>
+    <string name="camera">Kamera</string>
+    <string name="gallery">Galleri</string>
+    <string name="description">Deskripsi</string>
+    <string name="add_story">Tambah Cerita</string>
+    <string name="logout">Keluar</string>
+    <string name="change_language">Ganti Bahasa</string>
+    <string name="menu_setting">Pengaturan</string>
+
+    <string-array name="list_setting">
+        <item>Ganti Bahasa</item>
+        <item>Keluar</item>
+    </string-array>
+</resources>
