@@ -1,9 +1,7 @@
-import org.jetbrains.kotlin.utils.addToStdlib.safeAs
 
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.jetbrains.kotlin.android)
-//    alias(libs.plugins.kotlinAndroidKsp)
     alias(libs.plugins.androidx.navigation.safe.args)
     alias(libs.plugins.hiltAndroid)
     id("kotlin-kapt")
@@ -86,10 +84,6 @@ dependencies {
     implementation(libs.androidx.lifecycle.viewmodel.ktx)
     implementation(libs.androidx.fragment.ktx)
     kapt (libs.hilt.compiler)
-    //ksp
-//    implementation(libs.hilt.compiler)
-//    implementation(libs.dagger.compiler)
-
 
     implementation(libs.androidx.camera.camera2)
     implementation(libs.camera.lifecycle)

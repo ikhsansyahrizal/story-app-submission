@@ -96,7 +96,7 @@
         android:layout_marginBottom="@dimen/space_xxxjumbo"
         android:background="@drawable/btn_background"
         android:text="Register"
-        android:textColor="@color/primary_text"
+        android:textColor="@color/white"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@+id/textInputLayoutPassowrd"
         app:layout_constraintStart_toStartOf="@+id/textInputLayoutPassowrd" />

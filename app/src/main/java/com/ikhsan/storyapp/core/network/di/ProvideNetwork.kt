@@ -2,6 +2,7 @@ package com.ikhsan.storyapp.core.network.di
 
 import android.content.Context
 import android.net.ConnectivityManager
+import android.util.Log
 import com.google.gson.GsonBuilder
 import com.ikhsan.storyapp.BuildConfig
 import com.ikhsan.storyapp.R
@@ -53,7 +54,6 @@ object ProvideNetwork {
             .addNetworkInterceptor {
                 val original = it.request()
                 val requestBuilder = original.newBuilder()
-                requestBuilder.header("Content-Type", "application/json")
                 requestBuilder.header("Authorization", "Bearer " + dataStore.getPreference(
                     USER_SESSION, ""))
                 val request = requestBuilder.method(original.method, original.body).build()

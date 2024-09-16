@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.addstory.AddStoryFragment">
+
+    <ImageView
+        android:id="@+id/previewImageView"
+        android:layout_width="match_parent"
+        android:layout_height="400dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/ic_place_holder" />
+
+    <TextView
+        android:id="@+id/tv_add_image"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/space_normal"
+        android:padding="@dimen/size_xxxsmall"
+        android:text="add image from :"
+        android:textColor="@color/black"
+        app:layout_constraintEnd_toEndOf="@+id/previewImageView"
+        app:layout_constraintStart_toStartOf="@+id/previewImageView"
+        app:layout_constraintTop_toBottomOf="@id/previewImageView" />
+
+    <LinearLayout
+        android:id="@+id/layout_btn_add_image"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintStart_toStartOf="@id/previewImageView"
+        app:layout_constraintEnd_toEndOf="@id/previewImageView"
+        app:layout_constraintTop_toBottomOf="@id/tv_add_image">
+
+        <Button
+            android:id="@+id/button_camera"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="start"
+            android:layout_marginHorizontal="@dimen/space_normal"
+            android:layout_weight="1"
+            android:background="@drawable/btn_background"
+            android:text="Camera"
+            android:textColor="@color/white" />
+
+        <Button
+            android:id="@+id/button_gallery"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="end"
+            android:layout_marginHorizontal="@dimen/space_normal"
+            android:layout_weight="1"
+            android:background="@drawable/btn_background"
+            android:text="Gallery"
+            android:textColor="@color/white" />
+
+    </LinearLayout>
+
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/textInputLayoutDescription"
+        style="@android:style/TextAppearance.Widget.EditText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/space_normal"
+        android:layout_marginHorizontal="@dimen/space_jumbo"
+        app:errorEnabled="true"
+        app:errorTextColor="@color/red_error"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.313"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/layout_btn_add_image">
+
+        <com.ikhsan.storyapp.base.customview.CustomEditText
+            android:id="@+id/ed_add_description"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/size_jumbo"
+            android:gravity="center|start"
+            android:hint="Description"
+            android:imeOptions="actionNext"
+            android:inputType="text"
+            android:textColor="@color/black"
+            app:layout_constraintVertical_bias="0.274" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <Button
+        android:id="@+id/button_add"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/space_xxxjumbo"
+        android:background="@drawable/btn_background"
+        android:text="Add Story"
+        android:textColor="@color/white"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/textInputLayoutDescription"
+        app:layout_constraintStart_toStartOf="@+id/textInputLayoutDescription" />
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

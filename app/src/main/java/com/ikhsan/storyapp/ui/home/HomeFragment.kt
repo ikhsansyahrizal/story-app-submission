@@ -39,9 +39,7 @@ class HomeFragment: BaseFragment<FragmentHomeBinding>(FragmentHomeBinding::infla
                     adapter.addAll(it)
                 }
             }
-            data?.specialMessage?.let {
-                displayInfoMessage(it)
-            }
+            data?.specialMessage?.forceLogout()
             data?.message?.let { displayInfoMessage(it) }
             data?.loading?.let { showLoadingDialog(it) }
         }
@@ -49,6 +47,10 @@ class HomeFragment: BaseFragment<FragmentHomeBinding>(FragmentHomeBinding::infla
 
     override fun initListener() {
         initScrollListener()
+
+        bind.buttonAdd.setOnClickListener {
+            gooTo(HomeFragmentDirections.toAddStory())
+        }
 
         bind.swipe.onSwipeListener {
             scrollListener.resetState()

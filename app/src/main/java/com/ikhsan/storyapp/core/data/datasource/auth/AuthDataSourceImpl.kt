@@ -1,6 +1,5 @@
 package com.ikhsan.storyapp.core.data.datasource.auth
 
-import android.util.Log
 import com.ikhsan.storyapp.base.BaseRemote
 import com.ikhsan.storyapp.base.wrapper.ConsumeResultRemote
 import com.ikhsan.storyapp.base.wrapper.RemoteResult
@@ -40,7 +39,6 @@ class AuthDataSourceImpl @Inject constructor() : AuthDataSource, BaseRemote() {
         )
         return when (val remoteResult = getRemoteResult(apiCall = api.doLogin(request))) {
             is RemoteResult.Success -> {
-                Log.d("datasource", "${remoteResult}")
                 ConsumeResultRemote.Success(data = remoteResult.data)
             }
             is RemoteResult.Error -> {
