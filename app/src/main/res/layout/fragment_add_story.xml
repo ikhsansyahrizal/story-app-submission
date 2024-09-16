@@ -7,6 +7,8 @@
     tools:context=".ui.addstory.AddStoryFragment">
 
     <ImageView
+        android:alpha="0"
+        tools:alpha="100"
         android:id="@+id/previewImageView"
         android:layout_width="match_parent"
         android:layout_height="400dp"
@@ -19,6 +21,8 @@
         app:srcCompat="@drawable/ic_place_holder" />
 
     <TextView
+        android:alpha="0"
+        tools:alpha="100"
         android:id="@+id/tv_add_image"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -40,6 +44,8 @@
         app:layout_constraintTop_toBottomOf="@id/tv_add_image">
 
         <Button
+            android:alpha="0"
+            tools:alpha="100"
             android:id="@+id/button_camera"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -51,6 +57,8 @@
             android:textColor="@color/white" />
 
         <Button
+            android:alpha="0"
+            tools:alpha="100"
             android:id="@+id/button_gallery"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -65,6 +73,8 @@
 
 
     <com.google.android.material.textfield.TextInputLayout
+        android:alpha="0"
+        tools:alpha="100"
         android:id="@+id/textInputLayoutDescription"
         style="@android:style/TextAppearance.Widget.EditText"
         android:layout_width="match_parent"
@@ -79,6 +89,8 @@
         app:layout_constraintTop_toBottomOf="@+id/layout_btn_add_image">
 
         <com.ikhsan.storyapp.base.customview.CustomEditText
+            android:alpha="0"
+            tools:alpha="100"
             android:id="@+id/ed_add_description"
             android:layout_width="match_parent"
             android:layout_height="@dimen/size_jumbo"
@@ -92,6 +104,8 @@
     </com.google.android.material.textfield.TextInputLayout>
 
     <Button
+        android:alpha="0"
+        tools:alpha="100"
         android:id="@+id/button_add"
         android:layout_width="0dp"
         android:layout_height="wrap_content"

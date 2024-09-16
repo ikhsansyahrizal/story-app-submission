@@ -1,6 +1,9 @@
 package com.ikhsan.storyapp.ui.addstory
 
+import android.animation.AnimatorSet
+import android.animation.ObjectAnimator
 import android.net.Uri
+import android.view.View
 import android.widget.Toast
 import androidx.activity.result.PickVisualMediaRequest
 import androidx.activity.result.contract.ActivityResultContracts
@@ -22,6 +25,10 @@ import okhttp3.RequestBody.Companion.toRequestBody
 class AddStoryFragment : BaseFragment<FragmentAddStoryBinding>(FragmentAddStoryBinding::inflate) {
     private var currentImageUri: Uri? = null
     private val viewModel: AddStoryViewModel by viewModels()
+
+    override fun initView() {
+        playAnimation()
+    }
 
     override fun initListener() {
         bind.buttonGallery.setOnClickListener {
@@ -54,7 +61,8 @@ class AddStoryFragment : BaseFragment<FragmentAddStoryBinding>(FragmentAddStoryB
         if (uri != null) {
             currentImageUri = uri
             showImage()
-        } else {}
+        } else {
+        }
     }
 
     private val launcherIntentCamera = registerForActivityResult(
@@ -92,10 +100,31 @@ class AddStoryFragment : BaseFragment<FragmentAddStoryBinding>(FragmentAddStoryB
                 requestImageFile
             )
 
-            val requestDescription = bind.edAddDescription.getTexts().toRequestBody("text/plain".toMediaType())
+            val requestDescription =
+                bind.edAddDescription.getTexts().toRequestBody("text/plain".toMediaType())
 
             viewModel.addNewStory(image = multipartBody, description = requestDescription)
 
-        } ?: Toast.makeText(requireContext(), "Please input image first", Toast.LENGTH_SHORT).show()    }
+        } ?: Toast.makeText(requireContext(), "Please input image first", Toast.LENGTH_SHORT).show()
+    }
 
+    private fun playAnimation() {
+        val photo = ObjectAnimator.ofFloat(bind.previewImageView, View.ALPHA, 1f).setDuration(500)
+
+        val addTv = ObjectAnimator.ofFloat(bind.tvAddImage, View.ALPHA, 1f).setDuration(500)
+        val cameraBtn = ObjectAnimator.ofFloat(bind.buttonCamera, View.ALPHA, 1f).setDuration(500)
+        val galleryBtn = ObjectAnimator.ofFloat(bind.buttonGallery, View.ALPHA, 1f).setDuration(500)
+
+        val descLayout =
+            ObjectAnimator.ofFloat(bind.textInputLayoutDescription, View.ALPHA, 1f).setDuration(500)
+        val descEt = ObjectAnimator.ofFloat(bind.edAddDescription, View.ALPHA, 1f).setDuration(500)
+
+        val addBtn = ObjectAnimator.ofFloat(bind.buttonAdd, View.ALPHA, 1f).setDuration(500)
+
+        AnimatorSet().apply {
+            playTogether(photo, addTv, cameraBtn, galleryBtn)
+            playSequentially(descLayout, descEt, addBtn)
+            start()
+        }
+    }
 }

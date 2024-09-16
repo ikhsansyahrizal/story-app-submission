@@ -7,6 +7,8 @@
     tools:context=".ui.detailstory.DetailStoryFragment">
 
     <ImageView
+        android:alpha="0"
+        tools:alpha="100"
         android:id="@+id/btn_back"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -16,6 +18,8 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
+        android:alpha="0"
+        tools:alpha="100"
         android:id="@+id/tv_title"
         style="@style/TextAppearance.AppCompat.Title"
         android:layout_width="wrap_content"
@@ -28,6 +32,8 @@
         app:layout_constraintTop_toTopOf="@+id/btn_back" />
 
     <ImageView
+        android:alpha="0"
+        tools:alpha="100"
         android:id="@+id/iv_detail_photo"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -37,6 +43,8 @@
         tools:src="@tools:sample/avatars"/>
 
     <TextView
+        android:alpha="0"
+        tools:alpha="100"
         android:id="@+id/tv_detail_date"
         style="@style/TextAppearance.Material3.TitleSmall"
         android:layout_marginTop="@dimen/space_normal"
@@ -49,6 +57,8 @@
         tools:text="@tools:sample/date/ddmmyy" />
 
     <TextView
+        android:alpha="0"
+        tools:alpha="100"
         android:id="@+id/tv_detail_name"
         style="@style/TextAppearance.AppCompat.Title"
         android:layout_width="match_parent"
@@ -61,6 +71,8 @@
         tools:text="@tools:sample/first_names" />
 
     <TextView
+        android:alpha="0"
+        tools:alpha="100"
         android:id="@+id/tv_detail_description"
         style="@style/MaterialAlertDialog.Material3.Body.Text"
         android:layout_width="0dp"

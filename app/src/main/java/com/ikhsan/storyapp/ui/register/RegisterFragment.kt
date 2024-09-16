@@ -1,6 +1,8 @@
 package com.ikhsan.storyapp.ui.register
 
-import androidx.fragment.app.activityViewModels
+import android.animation.AnimatorSet
+import android.animation.ObjectAnimator
+import android.view.View
 import androidx.fragment.app.viewModels
 import com.ikhsan.storyapp.R
 import com.ikhsan.storyapp.base.helper.getTexts
@@ -15,6 +17,7 @@ class RegisterFragment : BaseFragment<FragmentRegisterBinding>(FragmentRegisterB
     private val viewModel: RegisterViewModel by viewModels()
 
     override fun initView() {
+        playAnimation()
         bind.edRegisterName.apply {
             setTextInputLayout(bind.textInputLayoutName)
             setMaxLength(20)
@@ -59,5 +62,22 @@ class RegisterFragment : BaseFragment<FragmentRegisterBinding>(FragmentRegisterB
         }
     }
 
+    private fun playAnimation() {
+        val nameLayout = ObjectAnimator.ofFloat(bind.textInputLayoutName, View.ALPHA, 1f).setDuration(500)
+        val nameEt = ObjectAnimator.ofFloat(bind.edRegisterName, View.ALPHA, 1f).setDuration(500)
+
+        val emailLayout = ObjectAnimator.ofFloat(bind.textInputLayoutEmail, View.ALPHA, 1f).setDuration(500)
+        val emailEt = ObjectAnimator.ofFloat(bind.edRegisterEmail, View.ALPHA, 1f).setDuration(500)
+
+        val passLayout = ObjectAnimator.ofFloat(bind.textInputLayoutPassowrd, View.ALPHA, 1f).setDuration(500)
+        val passEt = ObjectAnimator.ofFloat(bind.edRegisterPassword, View.ALPHA, 1f).setDuration(500)
+
+        val loginBtn = ObjectAnimator.ofFloat(bind.btnRegister, View.ALPHA, 1f).setDuration(500)
+
+        AnimatorSet().apply {
+            playSequentially(nameLayout, nameEt, emailLayout, emailEt, passLayout, passEt, loginBtn)
+            start()
+        }
+    }
 
 }

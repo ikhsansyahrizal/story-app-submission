@@ -28,6 +28,7 @@ lifecycleViewmodelKtx = "2.8.5"
 fragmentKtx = "1.8.3"
 glideVersion = "4.12.0"
 swiperefreshlayout = "1.1.0"
+coreAnimation = "1.0.0"
 
 
 [libraries]
@@ -62,6 +63,7 @@ androidx-fragment-ktx = { group = "androidx.fragment", name = "fragment-ktx", ve
 glide = { group = "com.github.bumptech.glide", name = "glide", version.ref = "glideVersion"}
 glide-annotation = { group = "com.github.bumptech.glide", name = "compiler", version.ref = "glideVersion"}
 swipe-layout = { group = "androidx.swiperefreshlayout", name = "swiperefreshlayout", version.ref = "swiperefreshlayout"}
+androidx-core-animation = { group = "androidx.core", name = "core-animation", version.ref = "coreAnimation" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }

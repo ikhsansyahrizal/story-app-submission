@@ -1,5 +1,8 @@
 package com.ikhsan.storyapp.ui.home
 
+import android.animation.AnimatorSet
+import android.animation.ObjectAnimator
+import android.view.View
 import androidx.activity.OnBackPressedCallback
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -30,6 +33,8 @@ class HomeFragment: BaseFragment<FragmentHomeBinding>(FragmentHomeBinding::infla
 
         val callback: OnBackPressedCallback = object : OnBackPressedCallback(true) { override fun handleOnBackPressed() {} }
         requireActivity().onBackPressedDispatcher.addCallback(this, callback)
+
+        playAnimation()
     }
 
     override fun initObserver() {
@@ -83,5 +88,20 @@ class HomeFragment: BaseFragment<FragmentHomeBinding>(FragmentHomeBinding::infla
             }
         }
         bind.rvStory.addOnScrollListener(scrollListener)
+    }
+
+    private fun playAnimation() {
+        val titleTv = ObjectAnimator.ofFloat(bind.tvTitle, View.ALPHA, 1f).setDuration(500)
+        val logoutBtn = ObjectAnimator.ofFloat(bind.actionLogout, View.ALPHA, 1f).setDuration(500)
+
+        val rv = ObjectAnimator.ofFloat(bind.swipe, View.ALPHA, 1f).setDuration(500)
+
+        val addBtn = ObjectAnimator.ofFloat(bind.buttonAdd, View.ALPHA, 1f).setDuration(500)
+
+        AnimatorSet().apply {
+            playTogether(titleTv, logoutBtn)
+            playSequentially(rv, addBtn)
+            start()
+        }
     }
 }
