@@ -1,6 +1,7 @@
 package com.ikhsan.storyeapp.base
 
 import android.app.Dialog
+import android.content.Intent
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
@@ -123,4 +124,13 @@ abstract class BaseFragment<out VB: ViewBinding>(private val inflate: Inflate<VB
         icon = icon,
         ok = ok
     )
+
+    fun String.forceLogout() = displayMessage(this, "Login", R.drawable.img_fail) {
+        requireActivity().startActivity(
+            Intent().setClassName(
+            requireActivity().packageName, "com.ikhsan.storyapp.MainActivity"
+        ).apply {
+            addFlags(Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_CLEAR_TOP)
+        })
+    }
 }

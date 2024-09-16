@@ -46,6 +46,7 @@ class LoginFragment : BaseFragment<FragmentLoginBinding>(FragmentLoginBinding::i
             data?.data?.let { gooTo(LoginFragmentDirections.toHome()) }
             data?.message?.let { displayInfoMessage(it) }
             data?.loading?.let { showLoadingDialog(it) }
+            data?.specialMessage?.forceLogout()
         }
 
     }

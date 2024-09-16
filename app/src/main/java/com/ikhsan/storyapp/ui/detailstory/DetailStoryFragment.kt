@@ -12,7 +12,6 @@ class DetailStoryFragment: BaseFragment<FragmentDetailStoryBinding>(FragmentDeta
 
     private val args by navArgs<DetailStoryFragmentArgs>()
 
-
     override fun initView() {
         bind.apply {
             ivDetailPhoto.loadImageFrom(args.data.photoUrl.orEmpty())

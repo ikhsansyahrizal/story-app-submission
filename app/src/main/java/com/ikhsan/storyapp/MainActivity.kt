@@ -1,10 +1,17 @@
 package com.ikhsan.storyapp
 
+import android.Manifest
+import android.content.pm.PackageManager
+import android.net.Uri
 import android.os.Handler
 import android.os.Looper
+import android.util.Log
 import android.widget.Toast
 import android.window.OnBackInvokedDispatcher
 import androidx.activity.OnBackPressedCallback
+import androidx.activity.result.contract.ActivityResultContracts
+import androidx.core.content.ContextCompat
+import androidx.core.net.toUri
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.navigation.NavController
@@ -16,9 +23,31 @@ import dagger.hilt.android.AndroidEntryPoint
 @AndroidEntryPoint
 class MainActivity : BaseActivity<ActivityMainBinding>(ActivityMainBinding::inflate) {
 
+    companion object {
+        private const val REQUIRED_PERMISSION = Manifest.permission.CAMERA
+    }
+
     private lateinit var navHostFragment: NavHostFragment
     private lateinit var navController: NavController
     private var doubleBackToExitPressedOnce = false
+
+    private fun allPermissionsGranted() =
+        ContextCompat.checkSelfPermission(
+            this,
+            REQUIRED_PERMISSION
+        ) == PackageManager.PERMISSION_GRANTED
+
+    private val requestPermissionLauncher =
+        registerForActivityResult(
+            ActivityResultContracts.RequestPermission()
+        ) { isGranted: Boolean ->
+            if (isGranted) {
+                Toast.makeText(this, "Permission request granted", Toast.LENGTH_LONG).show()
+            } else {
+                Toast.makeText(this, "Permission request denied", Toast.LENGTH_LONG).show()
+            }
+        }
+
 
     override fun initView() {
         navHostFragment = supportFragmentManager.findFragmentById(R.id.fragment_container) as NavHostFragment
@@ -34,6 +63,10 @@ class MainActivity : BaseActivity<ActivityMainBinding>(ActivityMainBinding::infl
                 handleBackPress()
             }
         })
+
+        if (!allPermissionsGranted()) {
+            requestPermissionLauncher.launch(REQUIRED_PERMISSION)
+        }
     }
 
     override fun initListener() {
@@ -51,7 +84,6 @@ class MainActivity : BaseActivity<ActivityMainBinding>(ActivityMainBinding::infl
             navController.navigateUp()
         }
     }
-
 
     private fun onHandlerStart() {
         doubleBackToExitPressedOnce = true
