@@ -1,8 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">StoryApp</string>
-    <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="no_internet">No Internet Connection detected, please check your connection</string>
     <string name="detail_story">Detail Story</string>
     <string name="stories">Stories</string>
     <string name="doesn_t_have_an_accoount_register_here">Doesn\'t have an accoount ? <u>Register here</u></string>
+    <string name="username">Username</string>
+    <string name="password">Password</string>
+    <string name="login">Login</string>
+    <string name="add_image_from">add image from :</string>
+    <string name="camera">Camera</string>
+    <string name="gallery">Gallery</string>
+    <string name="description">Description</string>
+    <string name="add_story">Add Story</string>
+    <string name="logout">Logout</string>
+    <string name="change_language">Change Language</string>
+    <string name="menu_setting">Menu Setting</string>
+    <string name="retry">Retry</string>
+
+    <string-array name="list_setting">
+        <item>Change Language</item>
+        <item>Logout</item>
+    </string-array>
+
+    <string name="normal_type">Normal</string>
+    <string name="satellite_type">Satellite</string>
+    <string name="terrain_type">Terrain</string>
+    <string name="hybrid_type">Hybrid</string>
+    <string name="google_maps">Google Maps</string>
 </resources>

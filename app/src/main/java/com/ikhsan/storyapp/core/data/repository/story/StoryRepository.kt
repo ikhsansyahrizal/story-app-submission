@@ -1,6 +1,8 @@
 package com.ikhsan.storyapp.core.data.repository.story
 
 import android.graphics.Bitmap
+import androidx.lifecycle.LiveData
+import androidx.paging.PagingData
 import com.ikhsan.storyapp.base.wrapper.ConsumeResultDomain
 import com.ikhsan.storyapp.core.data.request.AddNewStoryReq
 import com.ikhsan.storyapp.core.data.response.AddNewStoryRes
@@ -13,11 +15,9 @@ import java.io.File
 
 interface StoryRepository {
 
-    fun getAllStories(
-        page: Int?,
-        size: Int?,
-        location: Int?
-    ): Flow<ConsumeResultDomain<List<ListStory>>>
+    fun getAllStories(): LiveData<PagingData<ListStory>>
+
+    fun getAllStoriesWithLocation(): LiveData<PagingData<ListStory>>
 
     fun addNewStory(
         description: RequestBody,

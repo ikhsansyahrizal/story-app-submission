@@ -24,13 +24,13 @@ class LoginFragment : BaseFragment<FragmentLoginBinding>(FragmentLoginBinding::i
 
         bind.edLoginEmail.apply {
             setTextInputLayout(bind.textInputLayoutUsername)
-            setMaxLength(20)
+            setMaxLength(60)
             maxLines = 1
         }
 
         bind.edLoginPassword.apply {
             setTextInputLayout(bind.textInputLayoutPassword)
-            setMaxLength(20)
+            setMaxLength(32)
             setMinLength(8)
             maxLines = 1
         }

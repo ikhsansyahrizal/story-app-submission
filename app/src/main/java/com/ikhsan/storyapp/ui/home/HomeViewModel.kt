@@ -1,39 +1,48 @@
 package com.ikhsan.storyapp.ui.home
 
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
-import androidx.lifecycle.viewModelScope
-import com.ikhsan.storyapp.base.UIStateData
-import com.ikhsan.storyapp.base.wrapper.ConsumeResultDomain
+import android.os.Parcelable
+import androidx.lifecycle.*
+import androidx.paging.PagingData
+import androidx.paging.cachedIn
 import com.ikhsan.storyapp.core.data.response.ListStory
 import com.ikhsan.storyapp.ui.domain.auth.AuthUseCase
 import com.ikhsan.storyapp.ui.domain.story.StoryUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
-import kotlinx.coroutines.flow.onStart
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
 class HomeViewModel @Inject constructor(
-    private val useCase :StoryUseCase,
-    private val authUseCase: AuthUseCase): ViewModel() {
+    private val storyUseCase: StoryUseCase,
+    private val authUseCase: AuthUseCase,
+    private val savedStateHandle: SavedStateHandle
+) : ViewModel() {
 
-    private var _stories = MutableLiveData<UIStateData<List<ListStory>>>()
-    val stories : LiveData<UIStateData<List<ListStory>>> = _stories
+    private val _refreshTrigger = MutableLiveData(0)
+    private val _stories = _refreshTrigger.switchMap {
+        liveData {
+            emitSource(storyUseCase.getAllStories().cachedIn(viewModelScope))
+        }
+    }
+    val stories: LiveData<PagingData<ListStory>> get() = _stories
 
-    fun getAllStories(page: Int?, size: Int?, location: Int? ) = viewModelScope.launch {
-        useCase.getAllStories(page, size, location)
-            .onStart { _stories.value = UIStateData(loading = true) }
-            .collect { data ->
-                when(data) {
-                    is ConsumeResultDomain.Success -> _stories.value = UIStateData(data = data.data, loading = false)
-                    is ConsumeResultDomain.Error -> _stories.value = UIStateData(message = data.message, loading = false)
-                    is ConsumeResultDomain.ErrorAuth -> _stories.value = UIStateData(specialMessage = data.message, loading = false)
-                }
-            }
+    var recyclerViewState: Parcelable?
+        get() = savedStateHandle.get<Parcelable>(KEY_RECYCLER_STATE)
+        set(value) {
+            savedStateHandle[KEY_RECYCLER_STATE] = value
+        }
+
+    fun refresh() {
+        _refreshTrigger.value = (_refreshTrigger.value ?: 0) + 1
     }
 
-    fun doLogOut() = authUseCase.doLogOut()
+    fun doLogOut() {
+        viewModelScope.launch {
+            authUseCase.doLogOut()
+        }
+    }
 
+    companion object {
+        private const val KEY_RECYCLER_STATE = "recycler_state"
+    }
 }

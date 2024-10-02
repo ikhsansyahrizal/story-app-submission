@@ -15,19 +15,34 @@
         android:layout_height="wrap_content"
         android:layout_margin="@dimen/space_normal"
         android:text="@string/stories"
+        android:textColor="@color/black"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+
     <ImageView
-        android:alpha="0"
-        tools:alpha="100"
-        android:id="@+id/action_logout"
+        android:id="@+id/img_map"
         android:layout_width="24dp"
         android:layout_height="24dp"
         android:layout_margin="@dimen/space_normal"
-        android:src="@drawable/ic_log_out"
+        android:alpha="0"
+        android:src="@drawable/ic_map"
+        android:visibility="visible"
+        app:layout_constraintEnd_toStartOf="@+id/action_setting"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:alpha="100" />
+
+    <ImageView
+        android:id="@+id/action_setting"
+        android:layout_width="24dp"
+        android:layout_height="24dp"
+        android:layout_margin="@dimen/space_normal"
+        android:alpha="0"
+        android:src="@drawable/ic_menu"
+        android:visibility="visible"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        tools:alpha="100" />
 
     <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
         android:alpha="0"
@@ -41,7 +56,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/action_logout">
+        app:layout_constraintTop_toBottomOf="@+id/tv_title">
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rv_story"

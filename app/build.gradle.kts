@@ -1,11 +1,12 @@
-
 plugins {
+
     alias(libs.plugins.android.application)
     alias(libs.plugins.jetbrains.kotlin.android)
     alias(libs.plugins.androidx.navigation.safe.args)
     alias(libs.plugins.hiltAndroid)
     id("kotlin-kapt")
     id("kotlin-parcelize")
+    alias(libs.plugins.google.android.libraries.mapsplatform.secrets.gradle.plugin)
 }
 
 
@@ -63,10 +64,25 @@ android {
         correctErrorTypes = true
         generateStubs = false
     }
-
+    testOptions {
+        unitTests.isReturnDefaultValues = true
+    }
 }
 
 dependencies {
+
+    testImplementation(libs.testMockk)
+    testImplementation(libs.testMockkAgent)
+    testImplementation(libs.androidx.core.testing)
+    testImplementation(libs.kotlinx.coroutines.test)
+
+    implementation(libs.androidx.room.paging)
+    implementation(libs.androidx.paging.runtime.ktx)
+    implementation(libs.androidx.room.ktx)
+    implementation(libs.androidx.room.runtime)
+    implementation(libs.play.services.maps)
+    testImplementation(libs.junit.junit)
+    kapt(libs.androidx.room.compiler)
 
     implementation(libs.swipe.layout)
     implementation(libs.glide)
@@ -84,7 +100,7 @@ dependencies {
     implementation(libs.androidx.lifecycle.viewmodel.ktx)
     implementation(libs.androidx.fragment.ktx)
     implementation(libs.androidx.core.animation)
-    kapt (libs.hilt.compiler)
+    kapt(libs.hilt.compiler)
 
     implementation(libs.androidx.camera.camera2)
     implementation(libs.camera.lifecycle)

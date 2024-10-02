@@ -53,6 +53,9 @@
         <action
             android:id="@+id/to_add_story"
             app:destination="@id/addStoryFragment" />
+        <action
+            android:id="@+id/to_map"
+            app:destination="@id/mapsFragment" />
     </fragment>
     <fragment
         android:id="@+id/detailStoryFragment"
@@ -72,4 +75,9 @@
             android:id="@+id/to_home"
             app:destination="@id/homeFragment" />
     </fragment>
+    <fragment
+        android:id="@+id/mapsFragment"
+        android:name="com.ikhsan.storyapp.ui.maps.MapsFragment"
+        android:label="fragment_maps"
+        tools:layout="@layout/fragment_maps" />
 </navigation>

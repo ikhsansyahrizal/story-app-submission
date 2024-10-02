@@ -9,6 +9,7 @@ import android.util.Log
 import android.widget.Toast
 import android.window.OnBackInvokedDispatcher
 import androidx.activity.OnBackPressedCallback
+import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.content.ContextCompat
 import androidx.core.net.toUri
@@ -26,30 +27,13 @@ import kotlinx.coroutines.launch
 @AndroidEntryPoint
 class MainActivity : BaseActivity<ActivityMainBinding>(ActivityMainBinding::inflate) {
 
-    companion object {
-        private const val REQUIRED_PERMISSION = Manifest.permission.CAMERA
-    }
-
     private lateinit var navHostFragment: NavHostFragment
     private lateinit var navController: NavController
     private var doubleBackToExitPressedOnce = false
-
-    private fun allPermissionsGranted() =
-        ContextCompat.checkSelfPermission(
-            this,
-            REQUIRED_PERMISSION
-        ) == PackageManager.PERMISSION_GRANTED
-
-    private val requestPermissionLauncher =
-        registerForActivityResult(
-            ActivityResultContracts.RequestPermission()
-        ) { isGranted: Boolean ->
-            if (isGranted) {
-                Toast.makeText(this, "Permission request granted", Toast.LENGTH_LONG).show()
-            } else {
-                Toast.makeText(this, "Permission request denied", Toast.LENGTH_LONG).show()
-            }
-        }
+    private lateinit var permissionLauncher: ActivityResultLauncher<Array<String>>
+    private var isCameraPermissionGranted = false
+    private var isLocationPermissionGranted = false
+    private var isStoragePermissionGranted = false
 
 
     override fun initView() {
@@ -67,9 +51,14 @@ class MainActivity : BaseActivity<ActivityMainBinding>(ActivityMainBinding::infl
             }
         })
 
-        if (!allPermissionsGranted()) {
-            requestPermissionLauncher.launch(REQUIRED_PERMISSION)
+        permissionLauncher = registerForActivityResult(ActivityResultContracts.RequestMultiplePermissions()) { permissions ->
+            isCameraPermissionGranted = permissions[Manifest.permission.CAMERA] ?: isCameraPermissionGranted
+            isLocationPermissionGranted = permissions[Manifest.permission.ACCESS_FINE_LOCATION] ?: isLocationPermissionGranted
+            isStoragePermissionGranted = permissions[Manifest.permission.READ_EXTERNAL_STORAGE] ?: isStoragePermissionGranted
         }
+
+        requestPermissions()
+
     }
 
     override fun initListener() {
@@ -96,6 +85,42 @@ class MainActivity : BaseActivity<ActivityMainBinding>(ActivityMainBinding::infl
             delay(2000)
             doubleBackToExitPressedOnce = false
 
+        }
+    }
+
+    private fun requestPermissions() {
+        isCameraPermissionGranted = ContextCompat.checkSelfPermission(
+            this,
+            Manifest.permission.CAMERA
+        ) == PackageManager.PERMISSION_GRANTED
+
+
+        isLocationPermissionGranted = ContextCompat.checkSelfPermission(
+            this,
+            Manifest.permission.ACCESS_FINE_LOCATION
+        ) == PackageManager.PERMISSION_GRANTED
+
+        isStoragePermissionGranted = ContextCompat.checkSelfPermission(
+            this,
+            Manifest.permission.READ_EXTERNAL_STORAGE
+        ) == PackageManager.PERMISSION_GRANTED
+
+        val permissionRequestList = ArrayList<String>()
+
+        if (!isCameraPermissionGranted) {
+            permissionRequestList.add(Manifest.permission.CAMERA)
+        }
+
+        if (!isLocationPermissionGranted) {
+            permissionRequestList.add(Manifest.permission.ACCESS_FINE_LOCATION)
+        }
+
+        if (!isStoragePermissionGranted) {
+            permissionRequestList.add(Manifest.permission.READ_EXTERNAL_STORAGE)
+        }
+
+        if (permissionRequestList.isNotEmpty()) {
+            permissionLauncher.launch(permissionRequestList.toTypedArray())
         }
     }
 }

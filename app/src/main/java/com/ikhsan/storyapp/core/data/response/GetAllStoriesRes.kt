@@ -1,8 +1,12 @@
 package com.ikhsan.storyapp.core.data.response
 
 import android.os.Parcelable
+import androidx.annotation.NonNull
+import androidx.room.Entity
+import androidx.room.PrimaryKey
 import com.google.gson.annotations.SerializedName
 import kotlinx.parcelize.Parcelize
+import javax.annotation.Nonnull
 
 data class GetAllStoriesRes(
 
@@ -17,11 +21,13 @@ data class GetAllStoriesRes(
 
 )
 
+@Entity(tableName = "stories")
 @Parcelize
 data class ListStory(
 
+    @PrimaryKey
     @field:SerializedName("id")
-    val id: String? = null,
+    val id: String,
 
     @field:SerializedName("name")
     val name: String? = null,

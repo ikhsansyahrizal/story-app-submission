@@ -5,4 +5,5 @@ plugins {
     alias(libs.plugins.hiltAndroid) apply false
 //    alias(libs.plugins.kotlinAndroidKsp) apply false
     alias(libs.plugins.androidx.navigation.safe.args) apply false
+    alias(libs.plugins.google.android.libraries.mapsplatform.secrets.gradle.plugin) apply false
 }

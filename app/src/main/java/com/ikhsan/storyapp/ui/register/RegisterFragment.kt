@@ -20,21 +20,21 @@ class RegisterFragment : BaseFragment<FragmentRegisterBinding>(FragmentRegisterB
         playAnimation()
         bind.edRegisterName.apply {
             setTextInputLayout(bind.textInputLayoutName)
-            setMaxLength(20)
+            setMaxLength(60)
             maxLines = 1
         }
 
         bind.edRegisterEmail.apply {
             setTextInputLayout(bind.textInputLayoutEmail)
             setEmailFormat(true)
-            setMaxLength(20)
+            setMaxLength(60)
             maxLines = 1
         }
 
         bind.edRegisterPassword.apply {
             setMinLength(8)
             setTextInputLayout(bind.textInputLayoutPassowrd)
-            setMaxLength(20)
+            setMaxLength(32)
             maxLines = 1
         }
 

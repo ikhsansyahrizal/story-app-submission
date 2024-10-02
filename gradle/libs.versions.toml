@@ -29,6 +29,15 @@ fragmentKtx = "1.8.3"
 glideVersion = "4.12.0"
 swiperefreshlayout = "1.1.0"
 coreAnimation = "1.0.0"
+pagingRuntimeKtx = "3.3.2"
+roomPaging = "2.6.1"
+roomKtx = "2.6.1"
+googleAndroidLibrariesMapsplatformSecretsGradlePlugin = "2.0.1"
+playServicesMaps = "19.0.0"
+coreTesting = "2.1.0"
+kotlinxCoroutinesTest = "1.6.1"
+junitJunit = "4.12"
+mockk = "1.13.2"
 
 
 [libraries]
@@ -64,6 +73,17 @@ glide = { group = "com.github.bumptech.glide", name = "glide", version.ref = "gl
 glide-annotation = { group = "com.github.bumptech.glide", name = "compiler", version.ref = "glideVersion"}
 swipe-layout = { group = "androidx.swiperefreshlayout", name = "swiperefreshlayout", version.ref = "swiperefreshlayout"}
 androidx-core-animation = { group = "androidx.core", name = "core-animation", version.ref = "coreAnimation" }
+androidx-paging-runtime-ktx = { module = "androidx.paging:paging-runtime-ktx", version.ref = "pagingRuntimeKtx" }
+androidx-room-paging = { module = "androidx.room:room-paging", version.ref = "roomPaging" }
+androidx-room-ktx = { module = "androidx.room:room-ktx", version.ref = "roomKtx" }
+androidx-room-runtime = { module = "androidx.room:room-runtime", version.ref = "roomKtx" }
+androidx-room-compiler = { module = "androidx.room:room-compiler", version.ref = "roomKtx" }
+play-services-maps = { group = "com.google.android.gms", name = "play-services-maps", version.ref = "playServicesMaps" }
+androidx-core-testing = { module = "androidx.arch.core:core-testing", version.ref = "coreTesting" }
+kotlinx-coroutines-test = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-test", version.ref = "kotlinxCoroutinesTest" }
+junit-junit = { group = "junit", name = "junit", version.ref = "junitJunit" }
+testMockk = { group = "io.mockk", name = "mockk", version.ref = "mockk" }
+testMockkAgent = { group = "io.mockk", name = "mockk-agent-jvm", version.ref = "mockk" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }
@@ -71,6 +91,7 @@ jetbrains-kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = 
 kotlinAndroidKsp = { id = "com.google.devtools.ksp", version.ref = "kspVersion" }
 hiltAndroid = { id = "com.google.dagger.hilt.android", version.ref = "hiltVersion" }
 androidx-navigation-safe-args = { id ="androidx.navigation.safeargs.kotlin",version.ref ="androidxNavigationSafeargsGradlePlugin" }
+google-android-libraries-mapsplatform-secrets-gradle-plugin = { id = "com.google.android.libraries.mapsplatform.secrets-gradle-plugin", version.ref = "googleAndroidLibrariesMapsplatformSecretsGradlePlugin" }
 
 
 

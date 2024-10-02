@@ -1,5 +1,6 @@
 package com.ikhsan.storyapp.ui.addstory
 
+import android.Manifest
 import android.animation.AnimatorSet
 import android.animation.ObjectAnimator
 import android.net.Uri
@@ -26,6 +27,16 @@ class AddStoryFragment : BaseFragment<FragmentAddStoryBinding>(FragmentAddStoryB
     private var currentImageUri: Uri? = null
     private val viewModel: AddStoryViewModel by viewModels()
 
+    private val requestCameraPermissionLauncher = registerForActivityResult(
+        ActivityResultContracts.RequestPermission()
+    ) { isGranted: Boolean ->
+        if (isGranted) {
+            startCamera()
+        } else {
+            requireActivity().onBackPressed()
+        }
+    }
+
     override fun initView() {
         playAnimation()
     }
@@ -36,7 +47,7 @@ class AddStoryFragment : BaseFragment<FragmentAddStoryBinding>(FragmentAddStoryB
         }
 
         bind.buttonCamera.setOnClickListener {
-            startCamera()
+            checkCameraPermission()
         }
 
         bind.buttonAdd.setOnClickListener {
@@ -54,6 +65,22 @@ class AddStoryFragment : BaseFragment<FragmentAddStoryBinding>(FragmentAddStoryB
         }
 
     }
+
+    private fun checkCameraPermission() {
+        when {
+            shouldShowRequestPermissionRationale(Manifest.permission.CAMERA) -> {
+                Toast.makeText(requireContext(), "Camera permission is needed to take pictures", Toast.LENGTH_SHORT).show()
+                requestCameraPermissionLauncher.launch(Manifest.permission.CAMERA)
+            }
+            requireContext().checkSelfPermission(Manifest.permission.CAMERA) == android.content.pm.PackageManager.PERMISSION_GRANTED -> {
+                startCamera()
+            }
+            else -> {
+                requestCameraPermissionLauncher.launch(Manifest.permission.CAMERA)
+            }
+        }
+    }
+
 
     private val launcherGallery = registerForActivityResult(
         ActivityResultContracts.PickVisualMedia()
